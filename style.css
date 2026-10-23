@@ -1,568 +1,81 @@
 /* ==========================================================================
-   1. VARIABLES & BASE RESETS
+   TYPOGRAPHY SYSTEM - SCRAPBOOK & Y2K PASTEL STYLE
    ========================================================================== */
+
 :root {
-  --bg-cream: #fff9f2;
-  --card-bg: #ffffff;
-  --text-color: #4a3e3d;
-  --text-muted: #7d6e6d;
-  --primary-pink: #ff85a1;
-  --primary-blue: #a2d2ff;
-  --accent-yellow: #fde2e4;
-  --accent-green: #e2f0d9;
-  --accent-brown: #8d6e63;
-  --border-color: #e6ccb2;
-  
-  --font-title: 'Dancing Script', cursive;
-  --font-hand: 'Patrick Hand', cursive;
-  --font-body: 'Be Vietnam Pro', sans-serif;
-  
-  --shadow-soft: 0 8px 20px rgba(141, 110, 99, 0.12);
-  --shadow-hover: 0 12px 28px rgba(141, 110, 99, 0.2);
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Khai báo Font variables */
+  --font-display: 'Dancing Script', cursive, Georgia, serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-handwriting: 'Caveat', 'Comic Sans MS', cursive;
+
+  /* Bảng màu chữ đủ độ tương phản trên nền sọc pastel */
+  --color-text-main: #3d3433;       /* Nâu đậm dịu mắt thay cho đen tuyền */
+  --color-text-muted: #6e5d5c;      /* Nâu gụ cho phụ đề */
+  --color-heading-primary: #b71c1c; /* Đỏ cherry ngọt ngào */
+  --color-heading-secondary: #8e24aa;/* Tím pastel hoài niệm */
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* Base Body Typography */
 body {
-  background-color: var(--bg-cream);
-  color: var(--text-color);
   font-family: var(--font-body);
-  line-height: 1.6;
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* Background Pattern Container */
-.bg-pattern-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* ==========================================================================
-   2. NAVBAR
-   ========================================================================== */
-.navbar-container {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 249, 242, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px dashed var(--border-color);
-}
-
-.navbar {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #d81b60;
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 600;
+  color: var(--color-text-main);
   font-size: 1rem;
-  transition: var(--transition);
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
+  line-height: 1.75; /* Line-height rộng rãi cho tiếng Việt */
+  -webkit-font-smoothing: antialiased;
 }
 
-.nav-links a:hover {
-  background-color: var(--primary-pink);
-  color: white;
+/* Headings Class Rules */
+h1, h2, h3, .heading-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8); /* Giúp chữ nổi rõ trên nền họa tiết */
 }
 
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  color: var(--text-color);
-  cursor: pointer;
+/* Responsive Font Sizes bằng clamp() */
+h1, .main-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: var(--color-heading-primary);
+  letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
-   3. SCRAPBOOK DECORATIONS & CARDS
-   ========================================================================== */
-.scrapbook-card {
-  background: var(--card-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 16px;
-  padding: 2.5rem;
-  position: relative;
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition);
-}
-
-.washi-tape {
-  position: absolute;
-  height: 26px;
-  width: 110px;
-  background-color: rgba(255, 214, 165, 0.7);
-  border: 1px dashed rgba(0, 0, 0, 0.15);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.tape-top-left { top: -12px; left: 20px; transform: rotate(-5deg); }
-.tape-top-right { top: -12px; right: 20px; transform: rotate(4deg); }
-.tape-top-center { top: -12px; left: 50%; transform: translateX(-50%) rotate(-1deg); }
-
-.button-decor {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
-}
-.btn-pink { background-color: var(--primary-pink); }
-.btn-yellow { background-color: #ffe082; }
-
-/* Buttons */
-.btn-scrapbook {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--primary-pink);
-  color: white;
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  text-decoration: none;
-  border: 2px solid #d81b60;
-  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.2);
-  transition: var(--transition);
-  cursor: pointer;
-}
-
-.btn-scrapbook:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 6px 15px rgba(216, 27, 96, 0.3);
-  background-color: #ff6b8b;
-}
-
-/* ==========================================================================
-   4. SECTIONS LAYOUT
-   ========================================================================== */
-.section-container {
-  max-width: 1100px;
-  margin: 4rem auto;
-  padding: 0 1.5rem;
-}
-
-.section-header {
+h2, .section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--color-heading-secondary);
   text-align: center;
-  margin-bottom: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
 }
 
-.section-title {
-  font-family: var(--font-title);
-  font-size: 2.8rem;
+h3, .chapter-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
   color: #c2185b;
 }
 
-/* Hero Section */
-.hero-section {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 1.5rem;
-  text-align: center;
-}
-
-.main-title {
-  font-family: var(--font-title);
-  font-size: 3.5rem;
-  color: #ad1457;
-  margin-top: 1rem;
-}
-
-.hero-subtitle {
-  font-family: var(--font-hand);
-  font-size: 1.6rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-.hero-image-polaroid {
-  background: white;
-  padding: 15px 15px 45px 15px;
-  border: 1px solid #e0e0e0;
-  box-shadow: var(--shadow-soft);
-  transform: rotate(-2deg);
-  max-width: 650px;
-  margin: 0 auto 2.5rem auto;
-  border-radius: 4px;
-  transition: var(--transition);
-}
-
-.hero-image-polaroid:hover {
-  transform: rotate(0deg) scale(1.02);
-}
-
-.polaroid-img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 2px;
+/* Handwritten Accent Classes (Sticker / Notes) */
+.handwritten, 
+.polaroid-caption, 
+.memory-quote, 
+.sticker-label {
+  font-family: var(--font-handwriting);
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .polaroid-caption {
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  color: var(--text-color);
-  display: block;
-  margin-top: 12px;
-}
-
-/* ==========================================================================
-   5. TIMELINE SECTION (JOURNEY)
-   ========================================================================== */
-.timeline-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-.chapter-card {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-.chapter-card.reverse {
-  grid-template-columns: 1.2fr 1fr;
-}
-
-.chapter-card.reverse .chapter-thumb {
-  order: 2;
-}
-
-.chapter-thumb img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 4px solid white;
-  box-shadow: var(--shadow-soft);
-}
-
-.chapter-badge {
-  display: inline-block;
-  background-color: var(--primary-blue);
-  color: #0d47a1;
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  padding: 0.2rem 0.8rem;
-  border-radius: 12px;
-  margin-bottom: 0.5rem;
-}
-
-.chapter-title {
-  font-family: var(--font-title);
-  font-size: 2.2rem;
-  color: #8e24aa;
-  margin-bottom: 0.8rem;
-}
-
-.chapter-desc {
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-/* ==========================================================================
-   6. GALLERY SECTION
-   ========================================================================== */
-.gallery-filters {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  background: white;
-  border: 2px solid var(--border-color);
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  padding: 0.4rem 1.2rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.filter-btn.active, .filter-btn:hover {
-  background-color: var(--primary-pink);
-  color: white;
-  border-color: #d81b60;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.8rem;
-}
-
-.gallery-item {
-  background: white;
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #e0e0e0;
-  box-shadow: var(--shadow-soft);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.gallery-item:nth-child(even) { transform: rotate(1.5deg); }
-.gallery-item:nth-child(odd) { transform: rotate(-1.5deg); }
-
-.gallery-item:hover {
-  transform: scale(1.04) rotate(0deg);
-  box-shadow: var(--shadow-hover);
-  z-index: 10;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.gallery-item-caption {
-  font-family: var(--font-hand);
-  font-size: 1.1rem;
-  text-align: center;
-  margin-top: 10px;
-  color: var(--text-color);
-}
-
-/* ==========================================================================
-   7. MEMORIES SECTION (STICKER CARDS)
-   ========================================================================== */
-.memories-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.memory-card {
-  background: #fffde7;
-  border: 1px solid #fff59d;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: var(--color-text-main);
 }
 
 .memory-quote {
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  color: #f57f17;
-  margin-bottom: 0.8rem;
-}
-
-.memory-author {
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-align: right;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   8. EPILOGUE & FOOTER
-   ========================================================================== */
-.epilogue-section {
-  max-width: 800px;
-  margin: 5rem auto;
-  padding: 0 1.5rem;
-  text-align: center;
-}
-
-.epilogue-title {
-  font-family: var(--font-title);
-  font-size: 2.8rem;
+  font-size: clamp(1.3rem, 2.8vw, 1.6rem);
   color: #d81b60;
-  margin-bottom: 1rem;
 }
 
-.epilogue-text {
-  font-size: 1.15rem;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-}
-
-.epilogue-signature {
-  font-family: var(--font-hand);
-  font-size: 1.5rem;
-  color: #8e24aa;
-}
-
-.footer {
-  text-align: center;
-  padding: 2rem;
-  border-top: 2px dashed var(--border-color);
-  background: rgba(255, 255, 255, 0.5);
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
-   9. MODAL & LIGHTBOX
-   ========================================================================== */
-.modal, .lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal.active, .lightbox.active {
-  display: flex;
-}
-
-.modal-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal-content {
-  position: relative;
-  max-width: 700px;
-  width: 90%;
-  max-height: 85vh;
-  overflow-y: auto;
-  z-index: 1001;
-}
-
-.modal-close, .lightbox-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
-/* Lightbox Styling */
-.lightbox {
-  background: rgba(0, 0, 0, 0.85);
-  flex-direction: column;
-}
-
-.lightbox-close { color: white; top: 20px; right: 30px; }
-
-.lightbox-content {
-  text-align: center;
-  max-width: 80%;
-  max-height: 80%;
-}
-
-.lightbox-content img {
-  max-width: 100%;
-  max-height: 70vh;
-  border-radius: 8px;
-  border: 4px solid white;
-}
-
-.lightbox-caption {
-  color: white;
-  font-family: var(--font-hand);
-  font-size: 1.5rem;
-  margin-top: 15px;
-}
-
-.lightbox-prev, .lightbox-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: var(--transition);
-}
-
-.lightbox-prev:hover, .lightbox-next:hover { background: rgba(255, 255, 255, 0.5); }
-.lightbox-prev { left: 30px; }
-.lightbox-next { right: 30px; }
-
-/* ==========================================================================
-   10. RESPONSIVE DESIGN
-   ========================================================================== */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--bg-cream);
-    flex-direction: column;
-    padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-bottom: 2px solid var(--border-color);
-  }
-
-  .nav-links.active { display: flex; }
-  .nav-toggle { display: block; }
-
-  .main-title { font-size: 2.5rem; }
-  .chapter-card, .chapter-card.reverse {
-    grid-template-columns: 1fr;
-  }
-  .chapter-card.reverse .chapter-thumb { order: 0; }
-  
-  .lightbox-prev { left: 10px; }
-  .lightbox-next { right: 10px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+/* Ghi chú nhỏ bên lề */
+.side-note {
+  font-family: var(--font-handwriting);
+  font-size: 1.2rem;
+  color: #00796b;
+  transform: rotate(-3deg);
+  display: inline-block;
 }
