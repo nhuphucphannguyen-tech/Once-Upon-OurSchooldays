@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Once Upon Our Schooldays - Nhật Ký Thanh Xuân</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BACKGROUND DECORATION SVG (Pastel Wave Stripes & Stars) -->
+  <div class="bg-pattern-container" aria-hidden="true">
+    <svg class="bg-pattern-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <pattern id="pastel-stripes" width="120" height="400" patternUnits="userSpaceOnUse">
+          <path d="M0,0 Q30,100 0,200 T0,400" fill="none" stroke="#ffe0b2" stroke-width="24" opacity="0.3"/>
+          <path d="M30,0 Q60,100 30,200 T30,400" fill="none" stroke="#bbdefb" stroke-width="24" opacity="0.3"/>
+          <path d="M60,0 Q90,100 60,200 T60,400" fill="none" stroke="#f8bbd0" stroke-width="24" opacity="0.3"/>
+          <path d="M90,0 Q120,100 90,200 T90,400" fill="none" stroke="#dbedc6" stroke-width="24" opacity="0.3"/>
+          
+          <!-- Pastel Stars -->
+          <polygon points="15,40 18,50 28,50 20,56 23,66 15,60 7,66 10,56 2,50 12,50" fill="#ffd54f" opacity="0.8"/>
+          <polygon points="75,140 77,147 85,147 79,151 81,158 75,153 69,158 71,151 65,147 73,147" fill="#ff80ab" opacity="0.8"/>
+          <polygon points="45,260 48,270 58,270 50,276 53,286 45,280 37,286 40,276 32,270 42,270" fill="#80deea" opacity="0.8"/>
+          <polygon points="105,330 107,337 115,337 109,341 111,348 105,343 99,348 101,341 95,337 103,337" fill="#c5e1a5" opacity="0.8"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#pastel-stripes)" />
+    </svg>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="navbar-container">
+    <nav class="navbar">
+      <a href="#hero" class="nav-logo">🌸 Our Schooldays</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở Menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Trang Chủ</a></li>
+        <li><a href="#journey">Hành Trình</a></li>
+        <li><a href="#gallery">Thư Viện</a></li>
+        <li><a href="#memories">Lưu Bút</a></li>
+        <li><a href="#epilogue">Phần Kết</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-card scrapbook-card">
+        <div class="washi-tape tape-top-left"></div>
+        <div class="washi-tape tape-top-right"></div>
+        
+        <!-- Ribbon Bow Decorative SVG -->
+        <div class="bow-decor bow-center">
+          <svg width="60" height="40" viewBox="0 0 100 70">
+            <path d="M50 35 C30 10, 5 15, 20 40 C35 60, 45 40, 50 35 Z" fill="#ff7043"/>
+            <path d="M50 35 C70 10, 95 15, 80 40 C65 60, 55 40, 50 35 Z" fill="#ff7043"/>
+            <circle cx="50" cy="35" r="8" fill="#d84315"/>
+            <path d="M45 40 L30 65 L40 65 L50 42 Z" fill="#f4511e"/>
+            <path d="M55 40 L70 65 L60 65 L50 42 Z" fill="#f4511e"/>
+          </svg>
+        </div>
+
+        <h1 class="main-title">Once Upon Our Schooldays</h1>
+        <p class="hero-subtitle">“Có những tháng năm, đi qua rồi vẫn muốn trở về.”</p>
+
+        <div class="hero-image-polaroid">
+          <img src="https://picsum.photos/id/1018/800/500" alt="Ảnh tập thể lớp học thanh xuân" class="polaroid-img">
+          <span class="polaroid-caption">Lớp chúng mình - Những ngày nắng đẹp ✨</span>
+        </div>
+
+        <div class="hero-cta-wrapper">
+          <a href="#journey" class="btn-scrapbook">
+            <span class="btn-icon">📖</span> Mở cuốn nhật ký
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. JOURNEY SECTION (HÀNH TRÌNH 3 NĂM THPT) -->
+    <section id="journey" class="section-container">
+      <div class="section-header">
+        <div class="button-decor btn-pink"></div>
+        <h2 class="section-title">Hành Trình Ba Năm THPT</h2>
+        <div class="button-decor btn-yellow"></div>
+      </div>
+
+      <div class="timeline-container" id="timelineContainer">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 3. GALLERY SECTION (KHO LƯU TRỮ KỶ NIỆM) -->
+    <section id="gallery" class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Kho Lưu Trữ Kỷ Niệm</h2>
+      </div>
+
+      <!-- Filters -->
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="lop10">Lớp 10</button>
+        <button class="filter-btn" data-filter="lop11">Lớp 11</button>
+        <button class="filter-btn" data-filter="lop12">Lớp 12</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 4. MEMORIES SECTION (NHỮNG MẢNH GHÉP THANH XUÂN) -->
+    <section id="memories" class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Những Mảnh Ghép Thanh Xuân</h2>
+      </div>
+
+      <div class="memories-grid" id="memoriesGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- 5. EPILOGUE SECTION (PHẦN KẾT) -->
+    <section id="epilogue" class="epilogue-section">
+      <div class="epilogue-card scrapbook-card">
+        <div class="washi-tape tape-top-center"></div>
+        <h2 class="epilogue-title">Trang Cuối Cuốn Sách...</h2>
+        <p class="epilogue-text">
+          Cảm ơn vì đã là một phần trong thanh xuân của nhau. Dù mai này mỗi người một ngả, 
+          nhưng những nụ cười, giọt nước mắt và kỷ niệm dưới mái trường này sẽ mãi là ngọn đèn sưởi ấm tim ta.
+        </p>
+        <div class="epilogue-signature">
+          <span>Hẹn gặp lại ở những đỉnh cao mới! ❤️</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© Once Upon Our Schooldays — Được thiết kế với tất cả tình yêu thương học trò ✨</p>
+  </footer>
+
+  <!-- MODAL: CHI TIẾT CHƯƠNG HÀNH TRÌNH -->
+  <div class="modal" id="chapterModal" aria-hidden="true">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-content scrapbook-card">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div id="modalBody">
+        <!-- Chapter details rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX: XEM ẢNH PHÓNG TO -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <button class="lightbox-prev" id="lightboxPrev">❮</button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Ảnh phóng to">
+      <p id="lightboxCaption" class="lightbox-caption"></p>
+    </div>
+    <button class="lightbox-next" id="lightboxNext">❯</button>
+  </div>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
