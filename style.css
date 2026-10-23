@@ -1,4 +1,117 @@
 /* ==========================================================================
+   1. KHAI BÁO CUSTOM FONTS TỪ REPOSITORY (@FONT-FACE)
+   ========================================================================== */
+
+/* Font Tiêu đề Chính */
+@font-face {
+  font-family: 'UTM-Mother';
+  src: url('assets/fonts/UTM-Mother.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap; /* Tối ưu trải nghiệm tải trang */
+}
+
+/* Font Tiêu đề Phụ & Nhãn Accent */
+@font-face {
+  font-family: 'MTD-Ariestha';
+  src: url('assets/fonts/MTD-Ariestha.otf') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font Nội dung & Ghi chú */
+@font-face {
+  font-family: 'MJ-Maritime-Wonderine';
+  src: url('assets/fonts/MJ-Maritime-Wonderine.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   2. HỆ THỐNG BIẾN TYPOGRAPHY VÀ MÀU SẮC
+   ========================================================================== */
+:root {
+  /* Khai báo Font Family thống nhất toàn hệ thống */
+  --font-display: 'UTM-Mother', cursive;
+  --font-accent: 'MTD-Ariestha', cursive;
+  --font-body: 'MJ-Maritime-Wonderine';
+
+  /* Màu sắc văn bản */
+  --color-text-main: #3d3433;       /* Nâu socola đậm - dễ đọc trên nền pastel */
+  --color-text-muted: #726260;      /* Nâu nhạt chú thích */
+  --color-title-primary: #b32658;    /* Hồng dâu tây Vintage */
+  --color-title-secondary: #7b2cbf;  /* Tím pastel hoài niệm */
+}
+
+/* ==========================================================================
+   3. ÁP DỤNG FONT CHO CÁC THÀNH PHẦN GIAO DIỆN
+   ========================================================================== */
+
+/* Body & Nội dung đoạn văn */
+body {
+  font-family: var(--font-body);
+  font-size: 1.1rem; /* Điều chỉnh kích thước chuẩn cho Peciva */
+  line-height: 1.8;   /* Giữ khoảng cách dòng rộng rãi để dấu tiếng Việt rõ ràng */
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tiêu đề chính (Hero / Site Title) */
+h1, .main-title, .site-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw + 1rem, 4.5rem);
+  font-weight: 700;
+  color: var(--color-title-primary);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* Tiêu đề các mục lớn (H2 / Section Title) */
+h2, .section-title, .epilogue-title {
+  font-family: var(--font-accent);
+  font-size: clamp(2.2rem, 4vw + 0.8rem, 3.2rem);
+  font-weight: 600;
+  color: var(--color-title-secondary);
+  line-height: 1.3;
+}
+
+/* Tiêu đề chương / Thẻ con (H3 / Chapter Title) */
+h3, .chapter-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2vw + 0.5rem, 1.7rem);
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   4. CHỮ TRANG TRÍ (HANDWRITTEN ACCENTS & STICKERS)
+   ========================================================================== */
+
+/* Nhãn viết tay trên sticker, ghi chú bên lề */
+.handwritten-note, .hero-subtitle, .polaroid-caption {
+  font-family: var(--font-accent);
+  font-size: 1.4rem;
+  color: #c2185b;
+}
+
+/* Câu trích dẫn trong thẻ Lưu bút */
+.memory-quote {
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #3e2723;
+}
+
+/* Nút bấm & Navigation Menu */
+.btn-scrapbook, .nav-links a, .filter-btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+/* ==========================================================================
    TẠO HÌNH NỀN CÓ ĐỘ TRONG SUỐT (BACKGROUND OPACITY)
    ========================================================================== */
 
