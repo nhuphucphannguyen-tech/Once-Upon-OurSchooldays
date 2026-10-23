@@ -423,3 +423,187 @@ h3, .chapter-title {
   transform: rotate(-3deg);
   display: inline-block;
 }
+
+/* ==========================================================================
+   INTERACTIVE FLIPBOOK (SỔ LƯU NIỆM LẬT TRANG)
+   ========================================================================== */
+.flipbook-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  perspective: 2000px; /* Tạo chiều sâu 3D cho hiệu ứng lật */
+  padding: 1rem;
+}
+
+.book {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: #fdfbf7;
+  border: 3px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(141, 110, 99, 0.2);
+  display: flex;
+  transform-style: preserve-3d;
+}
+
+/* Gáy sách ở chính giữa tạo hiệu ứng mở đôi */
+.book::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  transform: translateX(-50%);
+}
+
+.page {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-color: #fffdf9;
+  backface-visibility: hidden;
+  display: none; /* Mặc định ẩn, xử lý bằng JS active */
+}
+
+.page.active {
+  display: block;
+}
+
+/* Định dạng nội dung trang giấy */
+.page-content {
+  padding: 3rem 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  background-image: linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.cover-content {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background: #fff8ef;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: #b32658;
+  margin: 0.5rem 0;
+}
+
+.cover-subtitle {
+  font-family: var(--font-accent);
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.cover-badge-box {
+  background: #ffe082;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  border: 1px dashed #d7ccc8;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #5d4037;
+}
+
+.chapter-list {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--text-color);
+}
+
+.chapter-list li {
+  margin-bottom: 0.5rem;
+}
+
+.image-page-content {
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-small {
+  background: white;
+  padding: 12px 12px 35px 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: rotate(2deg);
+  max-width: 320px;
+}
+
+.polaroid-small img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.page-number {
+  align-self: flex-end;
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* Thanh điều khiển Flipbook */
+.flipbook-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.page-indicator {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #8e24aa;
+}
+
+.btn-control {
+  padding: 0.5rem 1.2rem;
+  font-size: 1.1rem;
+}
+
+.btn-control:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Responsive trên điện thoại (Mobile: hiển thị 1 trang mỗi lần lật) */
+@media (max-width: 768px) {
+  .book {
+    height: 420px;
+  }
+  
+  .page {
+    width: 100%;
+  }
+
+  .book::before {
+    display: none; /* Ẩn gáy sách giữa trên mobile */
+  }
+
+  .page-content {
+    padding: 2rem 1.5rem;
+  }
+}
