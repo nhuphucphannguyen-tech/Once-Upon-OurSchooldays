@@ -1,4 +1,90 @@
 /* ==========================================================================
+   1. CẤU HÌNH HÌNH NỀN CHÍNH (BACKGROUND INTEGRATION)
+   ========================================================================== */
+
+/* 
+   LƯU Ý: Thay 'background.jpg' bằng ĐÚNG tên file và định dạng 
+   (ví dụ: background.png, bg-scrapbook.jpg) mà bạn đã upload lên repo.
+*/
+body {
+  /* Tải hình nền từ đường dẫn tương đối */
+  background-image: url('assets/images/734720126793222295.jpg');
+  
+  /* Lựa chọn chế độ hiển thị phù hợp với họa tiết scrapbook:
+     - Nếu ảnh là họa tiết lặp lại (pattern): dùng repeat
+     - Nếu ảnh là một bức tranh lớn: dùng cover / center top
+  */
+  background-repeat: repeat; 
+  background-position: center top;
+  background-size: auto; /* Nếu muốn ảnh phủ kín màn hình lớn, đổi thành: cover */
+  background-attachment: fixed; /* Giữ nền cố định khi cuộn trang */
+  background-color: var(--bg-cream); /* Màu dự phòng khi ảnh đang tải */
+
+  color: var(--text-color);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Tối ưu hiển thị hình nền trên điện thoại */
+@media (max-width: 768px) {
+  body {
+    /* Tránh lag trên điện thoại khi dùng background-attachment: fixed */
+    background-attachment: scroll; 
+    background-size: contain; /* Hoặc cover tùy thuộc vào tỷ lệ ảnh thực tế của bạn */
+  }
+}
+
+/* ==========================================================================
+   2. BẢO ĐẢM ĐỘ TƯƠNG PHÁT VÀ KHẢ NĂNG ĐỌC (READABILITY)
+   ========================================================================== */
+
+/* Thẻ khung chứa nội dung (Scrapbook Card) được nâng cấp lớp nền 
+   trắng ngà ngọc trai trong suốt nhẹ để chữ nổi bật trên hình nền */
+.scrapbook-card {
+  background: rgba(255, 255, 255, 0.94); /* Độ đục 94% giữ được cảm giác giấy ngà nhưng đủ làm nổi chữ */
+  backdrop-filter: blur(4px); /* Làm mờ nhẹ họa tiết nền phía dưới khung */
+  border: 2px dashed var(--border-color);
+  border-radius: 18px;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(141, 110, 99, 0.15);
+  transition: var(--transition);
+}
+
+/* Khung Header Navbar nổi bật trên nền ảnh */
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 249, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px dashed var(--border-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Đảm bảo tiêu đề section có lớp nền mờ nhẹ nếu đứng trực tiếp trên background */
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.6rem 2rem;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-container {
+  text-align: center; /* Giúp căn giữa section-header */
+}
+/* ==========================================================================
    TYPOGRAPHY SYSTEM - SCRAPBOOK & Y2K PASTEL STYLE
    ========================================================================== */
 
