@@ -222,3 +222,67 @@ function navigateLightbox(direction) {
   if (currentLightboxIndex >= filteredGallery.length) currentLightboxIndex = 0;
   updateLightboxContent();
 }
+
+/* ==========================================================================
+   FLIPBOOK LOGIC (QUẢN LÝ LẬT TRANG SỔ LƯU NIỆM)
+   ========================================================================== */
+let currentPage = 1;
+const totalPages = 8; // Tổng số trang trong cấu trúc HTML
+
+function updateFlipbook() {
+  const pages = document.querySelectorAll(".page");
+  
+  pages.forEach((page, index) => {
+    const pageNum = index + 1;
+    if (pageNum === currentPage) {
+      page.classList.add("active");
+      page.style.transform = "rotateY(0deg)";
+      page.style.zIndex = "5";
+    } else if (pageNum < currentPage) {
+      page.classList.remove("active");
+      page.style.transform = "rotateY(-180deg)";
+      page.style.zIndex = "1";
+    } else {
+      page.classList.remove("active");
+      page.style.transform = "rotateY(0deg)";
+      page.style.zIndex = "1";
+    }
+  });
+
+  // Cập nhật chỉ số trang
+  document.getElementById("pageIndicator").innerText = `Trang ${currentPage} / ${totalPages}`;
+
+  // Vô hiệu hóa nút điều hướng khi ở đầu hoặc cuối
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+}
+
+function nextPage() {
+  if (currentPage < totalPages) {
+    currentPage++;
+    updateFlipbook();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    updateFlipbook();
+  }
+}
+
+// Hỗ trợ bấm phím mũi tên trái / phải trên bàn phím
+document.addEventListener("keydown", (e) => {
+  // Chỉ kích hoạt khi người dùng đang cuộn gần khu vực hành trình
+  const journeySection = document.getElementById("journey");
+  const rect = journeySection.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom >= 0) {
+    if (e.key === "ArrowRight") nextPage();
+    if (e.key === "ArrowLeft") prevPage();
+  }
+});
+
+// Khởi chạy khi tải trang
+document.addEventListener("DOMContentLoaded", () => {
+  updateFlipbook();
+});
