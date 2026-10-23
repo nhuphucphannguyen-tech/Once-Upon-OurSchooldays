@@ -14,7 +14,7 @@
 /* Font Tiêu đề Phụ & Nhãn Accent */
 @font-face {
   font-family: 'MTD-Ariestha';
-  src: url('assets/fonts/MTD-Ariestha.otf') format('woff2');
+  src: url('assets/fonts/MTD-Ariestha.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
