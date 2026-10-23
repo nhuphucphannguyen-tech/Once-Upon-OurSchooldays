@@ -1,4 +1,50 @@
 /* ==========================================================================
+   TẠO HÌNH NỀN CÓ ĐỘ TRONG SUỐT (BACKGROUND OPACITY)
+   ========================================================================== */
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  background-color: var(--bg-cream); /* Màu nền đệm phía sau hình ảnh */
+}
+
+/* Sử dụng lớp giả ::before để phủ hình nền và chỉnh độ trong suốt riêng biệt */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Đẩy lớp nền xuống dưới cùng để không che chữ/nút bấm */
+  pointer-events: none;
+
+  /* Đường dẫn đến hình nền của bạn */
+  background-image: url('assets/images/background.jpg'); 
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: auto;
+
+  /* 
+     ĐIỀU CHỈNH ĐỘ TRONG SUỐT TẠI ĐÂY (Giá trị từ 0.0 đến 1.0):
+     - 0.8: Trong suốt nhẹ (80% rõ) - Khuyên dùng cho scrapbook
+     - 0.5: Trong suốt 50%
+     - 0.3: Trong suốt mờ dịu
+  */
+  opacity: 0.8; 
+}
+
+/* Tối ưu hiển thị hình nền trên điện thoại */
+@media (max-width: 768px) {
+  body::before {
+    background-size: contain;
+  }
+}
+/* ==========================================================================
    1. CẤU HÌNH HÌNH NỀN CHÍNH (BACKGROUND INTEGRATION)
    ========================================================================== */
 
