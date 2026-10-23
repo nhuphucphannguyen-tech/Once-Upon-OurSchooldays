@@ -46,7 +46,7 @@
 }
 
 /* ==========================================================================
-   3. ÁP DỤNG FONT CHO CÁC THÀNH PHẦN GIAO DIỆN
+   ÁP DỤNG FONT CHO CÁC THÀNH PHẦN GIAO DIỆN
    ========================================================================== */
 
 /* Body & Nội dung đoạn văn */
@@ -84,6 +84,105 @@ h3, .chapter-title {
   font-weight: 700;
   font-size: clamp(1.3rem, 2vw + 0.5rem, 1.7rem);
   color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   NAVBAR (ĐÃ CHỈNH SỬA: CUỘN THEO TRANG VÀ HIỂN THỊ HÀNG NGANG)
+   ========================================================================== */
+.navbar-container {
+  /* KHẮC PHỤC LỖI 1: Loại bỏ position: sticky / fixed để menu cuộn tự nhiên theo trang */
+  position: relative; 
+  top: auto;
+  z-index: 100;
+  background: rgba(255, 249, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px dashed var(--border-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color-title-primary);
+  text-decoration: none;
+}
+
+/* KHẮC PHỤC LỖI 2: Chuyển danh sách menu từ chiều dọc sang chiều ngang bằng Flexbox */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  white-space: nowrap; /* Tránh ngắt dòng tên menu */
+}
+
+.nav-links a:hover {
+  background-color: var(--primary-pink);
+  color: white;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   RESPONSIVE CHO THIẾT BỊ DI ĐỘNG (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Ẩn menu ngang mặc định trên mobile, bật lại khi nhấn nút toggle */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 249, 242, 0.98);
+    flex-direction: column; /* Chuyển về dọc có tổ chức khi mở menu mobile */
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--border-color);
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .nav-links.active { 
+    display: flex; 
+  }
+  
+  .nav-toggle { 
+    display: block; 
+  }
 }
 
 /* ==========================================================================
@@ -158,7 +257,7 @@ body::before {
   }
 }
 /* ==========================================================================
-   1. CẤU HÌNH HÌNH NỀN CHÍNH (BACKGROUND INTEGRATION)
+   CẤU HÌNH HÌNH NỀN CHÍNH (BACKGROUND INTEGRATION)
    ========================================================================== */
 
 /* 
